@@ -32,13 +32,7 @@
         "build": "lwc-services build -m production -w scripts/webpack.config.js",
         "build:development": "lwc-services build -w scripts/webpack.config.js",
         "lint": "eslint ./src/**/*.js",
-        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
-        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
         "serve": "node scripts/server.js",
-        "test:unit": "lwc-services test:unit",
-        "test:unit:coverage": "lwc-services test:unit --coverage",
-        "test:unit:debug": "lwc-services test:unit --debug",
-        "test:unit:watch": "lwc-services test:unit --watch",
-        "watch": "lwc-services watch -w scripts/webpack.config.js"
+        "watch": "nodemon -e js,html,css --watch src --exec \"yarn lwc-services watch -w scripts/webpack.config.js\""
     }
 }
