@@ -3,7 +3,7 @@
     "description": "My amazing LWC app",
     "version": "0.0.1",
     "author": "Alvin Lee",
-    "bugs": "https://github.com/Alvin Lee/client/issues",
+    "bugs": "https://github.com/alvinslee/lwc-pwa-push-notifications/issues",
     "dependencies": {
         "@salesforce-ux/design-system": "^2.13.7",
         "compression": "^1.7.4",
@@ -22,7 +22,7 @@
         "npm": ">=6.4.1",
         "yarn": ">=1.9.4"
     },
-    "homepage": "https://github.com/Alvin Lee/client",
+    "homepage": "https://github.com/alvinslee/lwc-pwa-push-notifications",
     "keywords": [
         "lwc"
     ],
