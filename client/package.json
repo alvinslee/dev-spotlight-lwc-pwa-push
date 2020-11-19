@@ -33,6 +33,6 @@
         "build:development": "lwc-services build -w scripts/webpack.config.js",
         "lint": "eslint ./src/**/*.js",
         "serve": "node scripts/server.js",
-        "watch": "nodemon -e js,html,css --watch src --exec \"yarn lwc-services watch -w scripts/webpack.config.js\""
+        "watch": "nodemon -e js,html,css --watch src --exec \"yarn build && yarn serve\""
     }
 }
