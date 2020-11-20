@@ -15,7 +15,7 @@ const PUSH_TYPES = {
     description: 'International Space Station geolocation',
     url: 'http://api.open-notify.org/iss-now.json',
     responseToText: ({ iss_position }) => {
-      return `Current position of the International Space Station: ${iss_position.latitude} (lat), ${iss_position.longitude} (lon)`
+      return `Current position of the International Space Station: ${iss_position.latitude} (lat), ${iss_position.longitude} (long)`
     }
   },
   activity: {
@@ -100,7 +100,7 @@ app
     const subscriptions = readSubscriptions()
     subscriptions[subscription.endpoint] = { subscription, pushType, duration }
     writeSubscriptions(subscriptions)
-    webPush.sendNotification(subscription, `OK! You'll receive a "${PUSH_TYPES[pushType]}" notification every ${duration} seconds.`)
+    webPush.sendNotification(subscription, `OK! You'll receive a "${PUSH_TYPES[pushType].description}" notification every ${duration} seconds.`)
     startNotificationInterval({ subscription, pushType, duration })
     res.status(201).send('Subscribe OK')
   })

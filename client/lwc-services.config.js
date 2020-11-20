@@ -5,6 +5,9 @@ module.exports = {
         { from: 'src/resources/', to: 'dist/resources/' },
         { from: 'src/index.html', to: 'dist/' },
         { from: 'src/manifest.json', to: 'dist/' },
-        { from: 'src/pushSW.js', to: 'dist/pushSW.js' }
+        { from: 'src/pushSW.js', to: 'dist/pushSW.js' },
+        { from: 'node_modules/@salesforce-ux/design-system/assets',
+          to: 'dist/resources/SLDS/assets'
+        }
     ]
 };
