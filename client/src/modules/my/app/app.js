@@ -1,5 +1,5 @@
-import LightningElementWithSLDS from '../../LightningElementWithSLDS';
-const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'https://lwc-pwa-server.herokuapp.com';
+import LightningElementWithSLDS from '../../LightningElementWithSLDS'
+const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'https://lwc-pwa-server.herokuapp.com'
 
 export default class App extends LightningElementWithSLDS {
   swRegistration = null
@@ -7,27 +7,23 @@ export default class App extends LightningElementWithSLDS {
   vapidKey = null
 
   connectedCallback() {
-    this.init();
+    this.init()
   }
 
   async init() {
     try {
       this.swRegistration = await navigator.serviceWorker.getRegistration()
-      this.vapidKey = await this.getVapidKey();
-      this.subscription = await this.swRegistration.pushManager.getSubscription();
+      this.subscription = await this.swRegistration.pushManager.getSubscription()
       this.setOptionsState()
+      this.vapidKey = await this.getVapidKey()
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
-  get isSubscribed () {
-    return (this.subscription !== null)
-  }
-
   async getVapidKey() {
-    const result = await fetch(`${SERVER_ENDPOINT}/vapidPublicKey`);
-    return result.text();
+    const result = await fetch(`${SERVER_ENDPOINT}/vapidPublicKey`)
+    return result.text()
   }
 
   async handleSubscribeToggle () {
@@ -47,7 +43,7 @@ export default class App extends LightningElementWithSLDS {
     this.subscription = await this.swRegistration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: this.vapidKey
-    });
+    })
     try {
       const requestBody = {
         subscription: this.subscription,
@@ -58,7 +54,7 @@ export default class App extends LightningElementWithSLDS {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(requestBody)
-      });
+      })
       console.log(requestBody, await result.text(), this.subscription)
     } catch (err) {
       console.log(err)
@@ -77,8 +73,8 @@ export default class App extends LightningElementWithSLDS {
         body: JSON.stringify({
           subscription: this.subscription
         })
-      });
-      await this.subscription.unsubscribe();
+      })
+      await this.subscription.unsubscribe()
       this.subscription = null
       console.log(await result.text())
     } catch (err) {
@@ -112,5 +108,9 @@ export default class App extends LightningElementWithSLDS {
 
   notificationDuration () {
     return this.template.querySelector('my-notification-duration')
+  }
+
+  get isSubscribed () {
+    return (this.subscription !== null)
   }
 }
