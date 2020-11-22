@@ -6,7 +6,8 @@ module.exports = {
     plugins: [
       new GenerateSW({
         swDest: 'sw.js',
-        importScripts: ['pushSW.js']
+        importScripts: ['pushSW.js'],
+        exclude: ['resources/SLDS']
       })
     ]
 };

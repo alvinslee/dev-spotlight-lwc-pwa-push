@@ -6,14 +6,8 @@ module.exports = {
         { from: 'src/index.html', to: 'dist/' },
         { from: 'src/manifest.json', to: 'dist/' },
         { from: 'src/pushSW.js', to: 'dist/pushSW.js' },
-        { from: 'node_modules/@salesforce-ux/design-system/assets/styles',
-          to: 'dist/resources/SLDS/assets/styles'
-        },
-        { from: 'node_modules/@salesforce-ux/design-system/assets/fonts',
-          to: 'dist/resources/SLDS/assets/fonts'
-        },
-        { from: 'node_modules/@salesforce-ux/design-system/assets/icons/utility-sprite',
-          to: 'dist/resources/SLDS/assets/icons/utility-sprite'
+        { from: 'node_modules/@salesforce-ux/design-system/assets',
+          to: 'dist/resources/SLDS/assets'
         }
     ]
 };
