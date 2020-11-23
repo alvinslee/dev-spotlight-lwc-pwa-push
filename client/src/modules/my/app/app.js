@@ -7,18 +7,15 @@ export default class App extends LightningElementWithSLDS {
   vapidKey = null
 
   connectedCallback() {
-    this.init()
-  }
-
-  async init() {
-    try {
-      this.swRegistration = await navigator.serviceWorker.getRegistration()
-      this.subscription = await this.swRegistration.pushManager.getSubscription()
-      console.log('SUBSCRIPTION', this.subscription)
-      this.setOptionsState()
-      this.vapidKey = await this.getVapidKey()
-    } catch (error) {
-      console.log(error)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(async () => {
+        this.swRegistration = await navigator.serviceWorker.getRegistration()
+        this.subscription = await this.swRegistration.pushManager.getSubscription()
+        this.setOptionsState()
+        this.vapidKey = await this.getVapidKey()
+      })
+    } else {
+      console.log('service worker support is required for this client')
     }
   }
 
@@ -95,11 +92,9 @@ export default class App extends LightningElementWithSLDS {
   }
 
   setOptionDefaultsIfUnset () {
-    console.log('type?', typeof this.notificationType().value)
     if (typeof this.notificationType().value !== 'string') {
       this.notificationType().setValue('iss')
     }
-    console.log('duration?', typeof this.notificationDuration().value)
     if (typeof this.notificationDuration().value !== 'string') {
       this.notificationDuration().setValue('30')
     }
