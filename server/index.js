@@ -40,7 +40,7 @@ if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
 }
 
 webPush.setVapidDetails(
-  'mailto:alvin@ootbdev.com',
+  'mailto:REPLACE WITH YOUR EMAIL',
   VAPID_PUBLIC_KEY,
   VAPID_PRIVATE_KEY
 )
@@ -88,7 +88,7 @@ const initializeNotifications = () => {
 
 app
   .use(cors({
-    origin: ['http://localhost:3001', 'https://lwc-pwa-client.herokuapp.com'],
+    origin: ['http://localhost:3001', 'REPLACE WITH HEROKU CLIENT APP URL'],
     optionsSuccessStatus: 200
   }))
   .get('/vapidPublicKey', (_, res) => {

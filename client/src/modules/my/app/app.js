@@ -1,5 +1,5 @@
 import LightningElementWithSLDS from '../../LightningElementWithSLDS'
-const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'https://lwc-pwa-server.herokuapp.com'
+const SERVER_ENDPOINT = 'REPLACE WITH YOUR HEROKU SERVER APP URL'
 
 export default class App extends LightningElementWithSLDS {
   swRegistration = null
